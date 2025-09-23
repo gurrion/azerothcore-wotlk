@@ -5,7 +5,7 @@ builder = "dockerfile"
 dockerfilePath = "Dockerfile.railway"
 
 [deploy]
-# Health check endpoint
+# Health check endpoint - check worldserver on port 8085
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
@@ -54,10 +54,6 @@ command = ["dbimport"]
 env = { ACORE_COMPONENT = "dbimport" }
 oneShot = true
 depends_on = ["authserver"]
-
-# Static files configuration
-[static]
-route = "/"
 
 # Volumes for persistent data
 [[volumes]]
