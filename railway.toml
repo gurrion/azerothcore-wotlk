@@ -5,9 +5,7 @@ builder = "dockerfile"
 dockerfilePath = "Dockerfile.railway"
 
 [deploy]
-# Health check endpoint - check worldserver on port 8085
-healthcheckPath = "/"
-healthcheckTimeout = 100
+# Remove global healthcheck - let Railway use process-level health checks
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 
