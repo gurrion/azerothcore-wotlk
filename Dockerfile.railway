@@ -111,9 +111,6 @@ ENV AC_UPDATES_ENABLE_DATABASES=0
 ENV AC_DISABLE_INTERACTIVE=1
 ENV AC_CLOSE_IDLE_CONNECTIONS=0
 
-# Create volumes
-VOLUME ["/azerothcore/env/dist/etc", "/azerothcore/env/dist/logs"]
-
 # Copy Railway-specific entrypoint script
 COPY --chown=acore:acore apps/docker/railway-entrypoint.sh /azerothcore/entrypoint.sh
 RUN chmod +x /azerothcore/entrypoint.sh
