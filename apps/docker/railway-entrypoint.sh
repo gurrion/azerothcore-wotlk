@@ -11,23 +11,8 @@ wait_for_database() {
     local retries=30
     local count=0
 
-    # Debug: Mostrar información de conexión (sin contraseña)
-    echo "🔍 Debug - Intentando conectar a:"
-    echo "  Host: ${DATABASE_HOST:-NO_HOST}"
-    echo "  Usuario: ${DATABASE_USER:-NO_USER}"
-    echo "  Base de datos: ${DATABASE_NAME:-NO_DB}"
-    echo "  Puerto: ${DATABASE_PORT:-3306}"
-    echo "  Usando DATABASE_URL: ${DATABASE_URL:+Sí}"
-
     while [ $count -lt $retries ]; do
-        # Comando de prueba con salida detallada
-        echo "\n🔄 Intento $((count + 1))/$retries - Probando conexión..."
-        
-        # Comando de prueba con salida detallada
-        if ! mysql -h"${DATABASE_HOST}" -u"${DATABASE_USER}" -p"${DATABASE_PASSWORD}" -e "SELECT 1" 2>&1; then
-            echo "❌ Falló la conexión. Código de salida: $?"
-        else
-            echo "✅ ¡Conexión exitosa!"
+        if mysql -h"${DATABASE_HOST:-}" -u"${DATABASE_USER:-}" -p"${DATABASE_PASSWORD:-}" -e "SELECT 1" >/dev/null 2>&1; then
             echo "✅ Database is ready!"
             return 0
         fi

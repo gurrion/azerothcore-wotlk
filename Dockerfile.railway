@@ -80,6 +80,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         libmysqlclient21 libreadline8 gettext-base \
+        default-mysql-client \
         tzdata ca-certificates && \
     ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && \
     echo "$TZ" > /etc/timezone && \
