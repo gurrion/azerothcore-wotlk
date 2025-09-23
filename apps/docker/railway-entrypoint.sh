@@ -65,7 +65,29 @@ setup_database() {
     # Run database import if needed
     if [ -x "/azerothcore/env/dist/bin/dbimport" ]; then
         echo "📥 Running database import..."
-        dbimport
+
+        # Ensure dbimport configuration exists
+        CONF_DIR="/azerothcore/env/dist/etc"
+        CONF_FILE="$CONF_DIR/dbimport.conf"
+        CONF_DIST="$CONF_DIR/dbimport.conf.dist"
+
+        if [ ! -f "$CONF_FILE" ]; then
+            echo "⚠️  $CONF_FILE not found. Checking for $CONF_DIST..."
+            if [ -f "$CONF_DIST" ]; then
+                echo "📄 Creating missing dbimport.conf from template"
+                cp -v "$CONF_DIST" "$CONF_FILE"
+            else
+                echo "❌ Neither $CONF_FILE nor $CONF_DIST found. Skipping db import."
+                echo "   Please ensure the configuration directory is mounted at $CONF_DIR"
+                return 0
+            fi
+        fi
+
+        # Run dbimport with explicit config path
+        "/azerothcore/env/dist/bin/dbimport" -c "$CONF_FILE" || {
+            echo "❌ dbimport failed"
+            return 1
+        }
         echo "✅ Database import completed"
     fi
 }
