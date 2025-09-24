@@ -108,7 +108,7 @@ ENV PATH="/azerothcore/env/dist/bin:$PATH"
 ENV AC_DATA_DIR="/azerothcore/env/dist/data"
 ENV AC_LOGS_DIR="/azerothcore/env/dist/logs"
 ENV AC_TEMP_DIR="/azerothcore/env/dist/temp"
-ENV AC_UPDATES_ENABLE_DATABASES=0
+ENV AC_UPDATES_ENABLE_DATABASES=7
 ENV AC_DISABLE_INTERACTIVE=1
 ENV AC_CLOSE_IDLE_CONNECTIONS=0
 

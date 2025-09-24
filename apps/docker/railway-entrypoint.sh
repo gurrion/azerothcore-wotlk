@@ -83,7 +83,10 @@ setup_database() {
             fi
         fi
 
-        # Run dbimport with explicit config path
+        # Run dbimport with explicit config path and force-enable updates for this run
+        AC_UPDATES_ENABLE_DATABASES=7 \
+        AC_UPDATES_ALLOWED_MODULES=all \
+        AC_UPDATES_AUTO_SETUP=1 \
         "/azerothcore/env/dist/bin/dbimport" -c "$CONF_FILE" || {
             echo "❌ dbimport failed"
             return 1

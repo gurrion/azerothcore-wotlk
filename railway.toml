@@ -29,7 +29,7 @@ DOCKER_SOAP_EXTERNAL_PORT = "7878"
 # Disable interactive mode
 AC_DISABLE_INTERACTIVE = "1"
 AC_CLOSE_IDLE_CONNECTIONS = "0"
-AC_UPDATES_ENABLE_DATABASES = "0"
+AC_UPDATES_ENABLE_DATABASES = "7"
 
 # Process configuration - multiple services in one container
 [[processes.authserver]]
