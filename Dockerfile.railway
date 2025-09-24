@@ -99,6 +99,8 @@ COPY --from=base --chown=acore:acore /azerothcore/env/dist/bin/ /azerothcore/env
 COPY --from=base --chown=acore:acore /azerothcore/env/dist/etc/ /azerothcore/env/dist/etc/
 COPY --from=base --chown=acore:acore /azerothcore/conf/ /azerothcore/env/dist/etc/
 COPY --from=base --chown=acore:acore /azerothcore/data/ /azerothcore/env/dist/data/
+## dbimport expects SQL base files under $(SourceDirectory)/data/sql/... -> typically /azerothcore/data/sql/...
+COPY --from=base --chown=acore:acore /azerothcore/data/sql/ /azerothcore/data/sql/
 
 # Set permissions
 RUN chown -R acore:acore /azerothcore
