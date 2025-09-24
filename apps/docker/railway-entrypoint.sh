@@ -66,6 +66,9 @@ setup_database() {
     if [ -x "/azerothcore/env/dist/bin/dbimport" ]; then
         echo "📥 Running database import..."
 
+        # Ensure TempDir exists for mysql defaults file used by DBUpdater
+        mkdir -p "/azerothcore/env/dist/temp"
+
         # Ensure dbimport configuration exists
         CONF_DIR="/azerothcore/env/dist/etc"
         CONF_FILE="$CONF_DIR/dbimport.conf"

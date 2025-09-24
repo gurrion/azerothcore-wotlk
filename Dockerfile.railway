@@ -92,7 +92,7 @@ RUN groupadd -r -g 1000 acore && \
     useradd -r -u 1000 -g acore -d /azerothcore -s /bin/bash acore
 
 # Create necessary directories
-RUN mkdir -pv /azerothcore/env/dist/bin /azerothcore/env/dist/etc /azerothcore/env/dist/logs /azerothcore/env/dist/data
+RUN mkdir -pv /azerothcore/env/dist/bin /azerothcore/env/dist/etc /azerothcore/env/dist/logs /azerothcore/env/dist/data /azerothcore/env/dist/temp
 
 # Copy built binaries and config
 COPY --from=base --chown=acore:acore /azerothcore/env/dist/bin/ /azerothcore/env/dist/bin/
